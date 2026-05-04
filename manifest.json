@@ -1,0 +1,13 @@
+{
+  "name": "GYM TRACKER",
+  "short_name": "GYM",
+  "description": "점진적 과부하 & 체성분 분석 트래커",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#080808",
+  "theme_color": "#080808",
+  "orientation": "portrait-primary",
+  "icons": [
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}
