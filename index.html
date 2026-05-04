@@ -7,7 +7,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
 <meta name="apple-mobile-web-app-title" content="GYM"/>
 <meta name="theme-color" content="#080808"/>
-<link rel="manifest" href="/gym-tracker/manifest.json"/>
+<link rel="manifest" href="manifest.json"/>
 <title>GYM TRACKER</title>
 <style>
 :root{--bg:#080808;--bg2:#111;--bg3:#181818;--border:#222;--green:#00ff9d;--red:#ff4d6d;--yellow:#ffd166;--orange:#ff9f1c;--text:#e8e8e8;--sub:#555;--dim:#2a2a2a;}
@@ -1227,7 +1227,7 @@ function calMove(dir){
 
 
 // ── PWA
-if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('/gym-tracker/sw.js').catch(function(){});});}
+// serviceWorker disabled for GitHub Pages subpath
 
 // ── 초기화
 initViewMode();
