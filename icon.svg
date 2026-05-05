@@ -1,8 +1,33 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-  <rect width="512" height="512" rx="100" fill="#080808"/>
-  <rect x="60" y="230" width="80" height="52" rx="16" fill="#00ff9d"/>
-  <rect x="216" y="180" width="80" height="152" rx="16" fill="#00ff9d"/>
-  <rect x="372" y="210" width="80" height="92" rx="16" fill="#00ff9d"/>
-  <rect x="100" y="248" width="312" height="16" rx="8" fill="#004d30"/>
-  <text x="256" y="460" text-anchor="middle" font-family="Arial" font-weight="900" font-size="52" fill="#00ff9d">GYM</text>
+  <rect width="512" height="512" rx="110" fill="#1a1a2e"/>
+  <rect x="60" y="210" width="392" height="22" rx="11" fill="#00ff9d"/>
+  <rect x="60" y="185" width="28" height="72" rx="8" fill="#00cc7a"/>
+  <rect x="92" y="192" width="18" height="58" rx="6" fill="#00ff9d"/>
+  <rect x="424" y="185" width="28" height="72" rx="8" fill="#00cc7a"/>
+  <rect x="402" y="192" width="18" height="58" rx="6" fill="#00ff9d"/>
+  <ellipse cx="256" cy="340" rx="85" ry="75" fill="#8B6914"/>
+  <ellipse cx="256" cy="355" rx="52" ry="48" fill="#c8a96e"/>
+  <ellipse cx="148" cy="220" rx="28" ry="22" fill="#8B6914" transform="rotate(-40 148 220)"/>
+  <circle cx="128" cy="205" r="20" fill="#8B6914"/>
+  <ellipse cx="364" cy="220" rx="28" ry="22" fill="#8B6914" transform="rotate(40 364 220)"/>
+  <circle cx="384" cy="205" r="20" fill="#8B6914"/>
+  <circle cx="256" cy="210" r="90" fill="#8B6914"/>
+  <circle cx="185" cy="138" r="30" fill="#8B6914"/>
+  <circle cx="185" cy="138" r="18" fill="#c8784a"/>
+  <circle cx="327" cy="138" r="30" fill="#8B6914"/>
+  <circle cx="327" cy="138" r="18" fill="#c8784a"/>
+  <ellipse cx="256" cy="225" rx="55" ry="48" fill="#c8a96e"/>
+  <path d="M222 195 Q232 188 242 195" stroke="#3d2200" stroke-width="5" fill="none" stroke-linecap="round"/>
+  <path d="M270 195 Q280 188 290 195" stroke="#3d2200" stroke-width="5" fill="none" stroke-linecap="round"/>
+  <ellipse cx="232" cy="200" rx="9" ry="10" fill="#3d2200"/>
+  <ellipse cx="280" cy="200" rx="9" ry="10" fill="#3d2200"/>
+  <circle cx="235" cy="197" r="3" fill="white"/>
+  <circle cx="283" cy="197" r="3" fill="white"/>
+  <ellipse cx="256" cy="218" rx="14" ry="10" fill="#3d2200"/>
+  <path d="M238 232 Q256 248 274 232" stroke="#3d2200" stroke-width="4" fill="none" stroke-linecap="round"/>
+  <ellipse cx="310" cy="160" rx="7" ry="10" fill="#4af" opacity="0.8" transform="rotate(15 310 160)"/>
+  <ellipse cx="325" cy="175" rx="5" ry="7" fill="#4af" opacity="0.6"/>
+  <ellipse cx="148" cy="248" rx="22" ry="16" fill="#7a5a10"/>
+  <ellipse cx="364" cy="248" rx="22" ry="16" fill="#7a5a10"/>
+  <text x="256" y="465" text-anchor="middle" font-family="Arial" font-weight="900" font-size="48" fill="#00ff9d" letter-spacing="2">GYM</text>
 </svg>

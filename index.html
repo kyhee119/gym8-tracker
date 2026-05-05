@@ -8,6 +8,7 @@
 <meta name="apple-mobile-web-app-title" content="GYM"/>
 <meta name="theme-color" content="#080808"/>
 <link rel="manifest" href="manifest.json"/>
+<link rel="apple-touch-icon" href="/gym8-tracker/icon-180.png"/>
 <title>GYM TRACKER</title>
 <style>
 :root{--bg:#080808;--bg2:#111;--bg3:#181818;--border:#222;--green:#00ff9d;--red:#ff4d6d;--yellow:#ffd166;--orange:#ff9f1c;--text:#e8e8e8;--sub:#555;--dim:#2a2a2a;}
@@ -349,7 +350,15 @@ input[type=number]::-webkit-inner-spin-button{-webkit-appearance:none;}
     <button class="bsave" onclick="saveBody()">기록 저장</button>
     <div class="err" id="b-err"></div>
   </div>
-  <div id="b-list"></div>
+  <div class="card" id="b-range-card" style="display:none">
+  <div class="chd">📊 구간 변화 선택</div>
+  <div class="g2">
+    <div class="fl"><label>시작 날짜</label><select id="b-from" onchange="renderRangeSummary()"></select></div>
+    <div class="fl"><label>종료 날짜</label><select id="b-to" onchange="renderRangeSummary()"></select></div>
+  </div>
+  <div id="b-range-result" style="margin-top:10px;"></div>
+</div>
+<div id="b-list"></div>
 </div>
 
 
@@ -848,6 +857,23 @@ function renderBody(){
       +'</div></div>';
   }
   el.innerHTML='<div class="bwrap"><div class="bhd">체성분 기록</div>'+rows+sum+'</div>';
+  // 구간 선택 카드 업데이트
+  if(s.length>=2){
+    document.getElementById('b-range-card').style.display='';
+    var fromSel=document.getElementById('b-from');
+    var toSel=document.getElementById('b-to');
+    var fromVal=fromSel.value, toVal=toSel.value;
+    fromSel.innerHTML=s.map(function(l){return '<option value="'+l.date+'">'+l.date+'</option>';}).join('');
+    toSel.innerHTML=s.map(function(l){return '<option value="'+l.date+'">'+l.date+'</option>';}).join('');
+    // 기본값: 처음 ~ 마지막
+    if(!fromVal) fromSel.value=s[0].date;
+    else fromSel.value=fromVal;
+    if(!toVal) toSel.value=s[s.length-1].date;
+    else toSel.value=toVal;
+    renderRangeSummary();
+  } else {
+    document.getElementById('b-range-card').style.display='none';
+  }
 }
 
 
@@ -1225,6 +1251,38 @@ function calMove(dir){
   renderCalendar();
 }
 
+
+
+// ── 구간 변화 요약
+function renderRangeSummary(){
+  var fromDate=document.getElementById('b-from').value;
+  var toDate=document.getElementById('b-to').value;
+  var el=document.getElementById('b-range-result');
+  if(!fromDate||!toDate){el.innerHTML='';return;}
+  if(fromDate>toDate){
+    el.innerHTML='<div style="color:var(--red);font-size:.78rem;">시작 날짜가 종료 날짜보다 늦어요!</div>';
+    return;
+  }
+  var s=bodies.slice().sort(function(a,b){return new Date(a.date)-new Date(b.date);});
+  var f=s.find(function(l){return l.date===fromDate;});
+  var t=s.find(function(l){return l.date===toDate;});
+  if(!f||!t){el.innerHTML='<div style="color:var(--sub);font-size:.78rem;">해당 날짜 기록이 없어요.</div>';return;}
+  if(fromDate===toDate){el.innerHTML='<div style="color:var(--sub);font-size:.78rem;">같은 날짜는 비교할 수 없어요.</div>';return;}
+  function chg(lbl,val,unit,inv){
+    var n=parseFloat(val),pos=n>0,good=inv?!pos:pos;
+    var cls=pos?(good?'pg':'pb'):(good?'ng':'nb');
+    return '<div class="si"><span class="lb">'+lbl+' </span><span class="'+cls+'">'+(pos?'+':'')+n.toFixed(1)+unit+'</span></div>';
+  }
+  var bwChg=t.bw-f.bw;
+  var items=chg('체중',bwChg,'kg',true);
+  if(f.muscle&&t.muscle) items+=chg('근육량',t.muscle-f.muscle,'kg',false);
+  if(f.fat&&t.fat) items+=chg('체지방',t.fat-f.fat,'kg',true);
+  if(f.fat&&t.fat) items+=chg('체지방률',parseFloat(fatRate(t.fat,t.bw))-parseFloat(fatRate(f.fat,f.bw)),'%',true);
+  el.innerHTML='<div style="background:var(--bg3);border-radius:8px;padding:10px 12px;">'
+    +'<div style="color:#444;font-size:.62rem;letter-spacing:.05em;text-transform:uppercase;margin-bottom:7px;">'+fromDate+' → '+toDate+'</div>'
+    +'<div class="sitems">'+items+'</div>'
+    +'</div>';
+}
 
 // ── PWA
 // serviceWorker disabled for GitHub Pages subpath
