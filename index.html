@@ -320,7 +320,7 @@ input[type=number]::-webkit-inner-spin-button{-webkit-appearance:none;}
 <body>
 
 <div class="overlay-menu" id="overlay-menu" onclick="closeMenu()"></div>
-<div class="side-menu" id="side-menu"><div class="side-header"><div class="side-app-name">🐻 GYM <em>TRACKER</em></div><div class="side-sub">김경님의 헬스 기록</div></div><nav class="side-nav"><div class="nav-item on" onclick="switchTabMenu('w',this)"><span class="nav-icon">🏋️</span> 웨이트</div><div class="nav-item" onclick="switchTabMenu('c',this)"><span class="nav-icon">🏃</span> 유산소</div><div class="nav-item" onclick="switchTabMenu('n',this)"><span class="nav-icon">🥗</span> 영양</div><div class="nav-item" onclick="switchTabMenu('k',this)"><span class="nav-icon">📅</span> 캘린더</div><div class="nav-item" onclick="switchTabMenu('b',this)"><span class="nav-icon">⚖️</span> 체성분</div><div class="nav-item nav-ai" onclick="switchTabMenu('ai',this)"><span class="nav-icon">🐻</span> AI코치</div></nav><div class="side-footer"><div style="font-size:.65rem;color:var(--sub);">GYM TRACKER v3.0</div></div></div>
+<div class="side-menu" id="side-menu"><div class="side-header"><div class="side-app-name">🐻 GYM <em>TRACKER</em></div><div class="side-sub">나영님의 헬스 기록</div></div><nav class="side-nav"><div class="nav-item on" onclick="switchTabMenu('w',this)"><span class="nav-icon">🏋️</span> 웨이트</div><div class="nav-item" onclick="switchTabMenu('c',this)"><span class="nav-icon">🏃</span> 유산소</div><div class="nav-item" onclick="switchTabMenu('n',this)"><span class="nav-icon">🥗</span> 영양</div><div class="nav-item" onclick="switchTabMenu('k',this)"><span class="nav-icon">📅</span> 캘린더</div><div class="nav-item" onclick="switchTabMenu('b',this)"><span class="nav-icon">⚖️</span> 체성분</div><div class="nav-item nav-ai" onclick="switchTabMenu('ai',this)"><span class="nav-icon">🐻</span> AI코치</div></nav><div class="side-footer"><div style="font-size:.65rem;color:var(--sub);">GYM TRACKER v3.0</div></div></div>
 <div class="appbar">
   <div class="appbar-row">
     <button class="menu-btn" onclick="openMenu()">☰</button><h1>🐻 GYM <em>TRACKER</em></h1>
@@ -672,21 +672,6 @@ var _a='sk-ant-api03-Cb8K072',_b='eNJFjwabKI-nQdnoFY2WNV2aL_GiIe',_c='l4bXtMbUpI
 var CLAUDE_KEY=_a+_b+_c;
 function ld(k,d){try{var v=localStorage.getItem(k);return v?JSON.parse(v):d;}catch(e){return d;}}
 function sv(k,d){try{localStorage.setItem(k,JSON.stringify(d));}catch(e){}}
-// [나영 마이그레이션] 기존 키 → 새 키 자동 이전 (기존 데이터 보존)
-(function(){
-  var map={
-    'gymv3_w':'gymv3_w_ny','gymv3_c':'gymv3_c_ny','gymv2_b':'gymv2_b_ny',
-    'gymv3_n':'gymv3_n_ny','gymv3_info':'gymv3_info_ny','gymv3_foods':'gymv3_foods_ny',
-    'gymv3_ds':'gymv3_ds_ny','gymv3_ai':'gymv3_ai_ny','gymv3_wp':'gymv3_wp_ny'
-  };
-  Object.keys(map).forEach(function(old){
-    var nw=map[old];
-    if(!localStorage.getItem(nw) && localStorage.getItem(old)){
-      localStorage.setItem(nw, localStorage.getItem(old));
-      console.log('[Migration] '+old+' → '+nw);
-    }
-  });
-})();
 
 var workouts=ld(WK,[]);
 var cardios=ld(CK,[]);
